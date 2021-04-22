@@ -23,6 +23,10 @@ android {
 
 }
 
+configurations {
+    myConfig
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
@@ -31,4 +35,33 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+}
+
+
+
+project.afterEvaluate {
+    def isAndroidLibraryProject = project.plugins.hasPlugin('com.android.library')
+    if(isAndroidLibraryProject) {
+        task copyLibs(type: Copy) {
+            from configurations.myConfig
+            into "libs"
+        }
+        mergeReleaseJniLibFolders.dependsOn copyLibs
+
+        task copyDeps(type:Copy) {
+            from configurations.myConfig {
+                include '**/*.jar'
+            }
+            into "./build/intermediates/packaged-classes/release/libs" // this folder gets packaged inside the AAR
+        }
+        mergeReleaseJniLibFolders.dependsOn copyDeps // only this stage worked for me - neither earlier, nor later
+
+        task copyDebugDeps(type:Copy) {
+            from configurations.myConfig {
+                include '**/*.jar'
+            }
+            into "./build/intermediates/packaged-classes/debug/libs"
+        }
+        mergeDebugJniLibFolders.dependsOn copyDebugDeps
+    }
 }
