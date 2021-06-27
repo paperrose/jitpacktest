@@ -841,3 +841,6 @@ If the value changes while the reader is open, you must also send the `SoundOnOf
 ```
 CsEventBus.getDefault().post(new SoundOnOffEvent());
 ``` 
+
+### Samples
+You can find more basic code samples in [this repository](https://github.com/inappstory/Android-Example)
