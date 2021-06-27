@@ -126,7 +126,7 @@ Also `InAppStoryManager` contains methods:
 
 If the application supports multiple accounts, then you can implement switch user ID. To change user ID, you should use:
 ```
-InAppStoryService.getInstance().setUserId(userId)
+InAppStoryManager.getInstance().setUserId(userId)
 ```
 
 To change the `apiKey` parameter, you will need to reinitialize the `InAppStoryManager` (see the initialization example). This will remove the old instance.
