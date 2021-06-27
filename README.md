@@ -204,7 +204,7 @@ interface IStoriesListItem {
     void setImage(View itemView, String url, int backgroundColor); // itemView - the current cell, in the required View show the story's cover or background color if it is absent
     void setOpened(View itemView, boolean isOpened); // itemView is the current cell, change it as needed if it is opened
     void setHasAudio(View itemView, boolean hasAudio); // itemView - the current cell, change it as needed if this story has audio inside
-    void setHasVideo(View itemView, String videoUrl, String url, int backgroundColor); // itemView is the current cell, in the required View we show the video cover story (videoUrl), video poster (url) or background color if it is absent. To work with video cells, it is recommended to use a class from the VideoPlayer library as a container for displaying video and the loadVideo(String videoUrl) method to launch. This class provides for caching video covers. The VideoPlayer class inherits from TextureView
+    void setVideo(View itemView, String videoUrl, String url, int backgroundColor); // itemView is the current cell, in the required View we show the video cover story (videoUrl), video poster (url) or background color if it is absent. To work with video cells, it is recommended to use a class from the VideoPlayer library as a container for displaying video and the loadVideo(String videoUrl) method to launch. This class provides for caching video covers. The VideoPlayer class inherits from TextureView
 }
 ```
 If this interface is specified, other parameters, affecting the appearance of the list cell, will be ignored.
