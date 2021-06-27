@@ -236,7 +236,7 @@ appearanceManager
         }
 
         @Override
-        public void setHasVideo(View itemView, String videoUrl, String url, int backgroundColor) {
+        public void setVideo(View itemView, String videoUrl, String url, int backgroundColor) {
             itemView.findViewById(R.id.image).setBackgroundColor(backgroundColor);
             ((VideoPlayer)itemView.findViewById(R.id.video)).loadVideo(videoUrl);
         }
